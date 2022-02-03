@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Task from './TaskApp/Task';
+import { List } from "@mui/material";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <List>
+        <Task task={"Hello"} index={ "1"}/>
+        <Task task={"Hello"} index={ "2"}/>
+        <Task task={"Hello"} index={ "3"}/>
+        <Task task={"Hello"} index={ "4"}/>
+        <Task task={"Hello"} index={ "5"}/>
+        </List> 
     </div>
   );
 }
