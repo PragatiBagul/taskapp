@@ -21,7 +21,7 @@ const Task = ({ task, setTask,index }) => {
     }
     return (<ListItem disablePadding>        
         <ListItemButton>
-            <Checkbox edge="start" id={`checkbox-${index}`} onChange={() => completeTask(index)} />
+            <Checkbox edge="start" id={`checkbox-${index}`} disabled={isEditable} onChange={() => completeTask(index)} />
             {
                 isEditable ?
                     <>
