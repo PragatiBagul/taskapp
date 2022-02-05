@@ -1,13 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import TaskApp from './TaskApp/TaskApp';
-import { List } from "@mui/material";
-import { useState } from 'react';
+import NewTask from './components/NewTask';
 function App() {
-  const [task, setTask] = useState();
   return (
     <div className="App">
-      <TaskApp/>
+      <NewTask/>
     </div>
   );
 }

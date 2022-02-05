@@ -3,25 +3,18 @@ import { ListItem, ListItemButton, IconButton, TextField } from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useState } from "react";
-const AddTask = () => {
+const AddTask = ({tasks,setTasks}) => {
     const [task, setTask] = useState("");
-    const [isPending, setIsPending] = useState(false);
-    const addTask = (e) => {
-        //e.preventDefault();
-        setIsPending(true);
-        const t = {task}
+    const addTask = (e) =>
+    {
         if (task !== "")
         {
-            fetch('http://localhost:8000/tasks/', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(t)
-            }).then(() => {
-                setIsPending(false);
-            })
-        }
-        else {
-            alert("Cannot add an empty task");
+            setTasks([...tasks, task]);
+            setTask("");
+        }   
+        else
+        {
+            alert("Cannot add an empty task");  
         }
     }
     return (
@@ -39,7 +32,9 @@ const AddTask = () => {
                         />
                         <IconButton edge="end"
                             onClick={()=>setTask("")}
-                            color="primary">
+                    color="primary"
+                    disabled={task === "" ? true : false}
+                    >
                             <ClearIcon/>
                         </IconButton>
             </ListItemButton>
