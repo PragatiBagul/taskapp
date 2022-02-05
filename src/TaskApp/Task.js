@@ -3,7 +3,8 @@ import { useState } from 'react';
 import './Task.css';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-const Task = ({ task, setTask,index }) => {
+const Task = ({ data, index }) => {
+    const [task, setTask] = useState(data);
     const [isCompleted, setIsCompleted] = useState(false);
     const [isEditable, setIsEditable] = useState(false);
     const completeTask = (index) => {
@@ -16,10 +17,12 @@ const Task = ({ task, setTask,index }) => {
             setIsCompleted(false);
         }
     }
-    const handleChange = ({target}) => {
+    const handleChange = ({ target }) =>
+    {
         setTask(target.value);
     }
-    return (<ListItem disablePadding>        
+    return (
+        <ListItem disablePadding key={index}>        
         <ListItemButton>
             <Checkbox edge="start" id={`checkbox-${index}`} disabled={isEditable} onChange={() => completeTask(index)} />
             {
@@ -53,18 +56,3 @@ const Task = ({ task, setTask,index }) => {
 }
  
 export default Task;
-
-/*          
-             {
-                    isEditable ?
-                        (
-                        <IconButton edge="end" onClick={setIsEditable(false)} color="primary">
-                    <DoneOutlinedIcon/>
-                </IconButton>
-                    </>
-                        ) : ( <><ListItemText className={isCompleted ? 'completed' : 'incomplete'} id={index}>
-                        <span>{task}</span></ListItemText><IconButton edge="end" onClick={setIsEditable(true)} color="primary">
-                    <EditOutlinedIcon/>
-                </IconButton></>)
-                }   
-        </ListItemButton> */
