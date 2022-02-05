@@ -10,17 +10,37 @@ const NewTask = () => {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskContent, setTaskContent] = useState("");
     const [taskList, setTaskList] = useState([]);
-    const [task, setTask] = useState();
+    const [isPending, setIsPending] = useState(false);
     const [isTaskList, setIsTaskList] = useState(false);
-    //For content task
-    
-    //For listed task
-
     const clearTask = () => {
         setTaskTitle(null);
+        if (isTaskList)
+        {
+            setTaskList([]);    
+        }
+        else
+        {
+            setTaskContent("");
+        }
     }
-    const addTask = () => {
-        
+
+    const addTask = (e) => {
+        //e.preventDefault();
+        const taskType = isTaskList ? "list" : "content";
+        const t = isTaskList ? { taskTitle, taskList,taskType} : { taskTitle, taskContent,taskType};
+        setIsPending(true);
+        fetch('http://localhost:8000/tasks/', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(t)
+        }).then(() => {
+            console.log('new blog added');
+            setIsPending(false);
+        }).then(() => {
+            setTaskTitle("");
+        }).then(() => {
+            isTaskList ? setTaskList([]) : setTaskContent("") ;
+        })
     }
 
     const convertTaskType = () => {

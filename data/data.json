@@ -3,6 +3,71 @@
     {
       "task": "Some stuff",
       "id": 1
+    },
+    {
+      "taskTitle": "Ganpati Bappa Morya",
+      "id": 2
+    },
+    {
+      "taskTitle": "Ganpati Bappa Morya",
+      "taskContent": "Love you dearest. You always save me !",
+      "id": 3
+    },
+    {
+      "taskTitle": null,
+      "taskList": [
+        "Task 1",
+        "Task 2",
+        "Task 3"
+      ],
+      "id": 4
+    },
+    {
+      "taskTitle": "Shiv Shankar Shambhu",
+      "taskContent": "You're divine. You're pure. You're my God.",
+      "id": 5
+    },
+    {
+      "taskTitle": "Shiv Shankar Shambhu",
+      "taskContent": "You're divine. You're pure. You're my God.",
+      "id": 6
+    },
+    {
+      "taskTitle": "God is great",
+      "taskContent": "Hello God!",
+      "id": 7
+    },
+    {
+      "taskTitle": "God is",
+      "taskList": [
+        "Great",
+        "Divine",
+        "Pure",
+        "Mine"
+      ],
+      "id": 8
+    },
+    {
+      "taskTitle": "First Task",
+      "taskContent": "This is the description",
+      "id": 9
+    },
+    {
+      "taskTitle": "First Task App",
+      "taskContent": "This is the description. God loves me",
+      "taskType": "",
+      "id": 10
+    },
+    {
+      "taskTitle": "Task Title here",
+      "taskContent": "This is the task description. God!",
+      "id": 11
+    },
+    {
+      "taskTitle": "Task Title",
+      "taskContent": "Description here. Ganpati Bappa Morya!",
+      "taskType": "content",
+      "id": 12
     }
   ]
 }
