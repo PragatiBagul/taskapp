@@ -1,16 +1,9 @@
 {
   "tasks": [
     {
-      "task": "Some stuff",
-      "id": 1
-    },
-    {
-      "taskTitle": "Ganpati Bappa Morya",
-      "id": 2
-    },
-    {
       "taskTitle": "Ganpati Bappa Morya",
       "taskContent": "Love you dearest. You always save me !",
+      "taskType": "content",
       "id": 3
     },
     {
@@ -20,21 +13,25 @@
         "Task 2",
         "Task 3"
       ],
+      "taskType": "list",
       "id": 4
     },
     {
       "taskTitle": "Shiv Shankar Shambhu",
       "taskContent": "You're divine. You're pure. You're my God.",
+      "taskType": "content",
       "id": 5
     },
     {
       "taskTitle": "Shiv Shankar Shambhu",
       "taskContent": "You're divine. You're pure. You're my God.",
+      "taskType": "content",
       "id": 6
     },
     {
       "taskTitle": "God is great",
       "taskContent": "Hello God!",
+      "taskType": "content",
       "id": 7
     },
     {
@@ -50,17 +47,19 @@
     {
       "taskTitle": "First Task",
       "taskContent": "This is the description",
+      "taskType": "content",
       "id": 9
     },
     {
       "taskTitle": "First Task App",
       "taskContent": "This is the description. God loves me",
-      "taskType": "",
+      "taskType": "content",
       "id": 10
     },
     {
       "taskTitle": "Task Title here",
       "taskContent": "This is the task description. God!",
+      "taskType": "content",
       "id": 11
     },
     {
@@ -68,6 +67,18 @@
       "taskContent": "Description here. Ganpati Bappa Morya!",
       "taskType": "content",
       "id": 12
+    },
+    {
+      "taskTitle": "Another Task",
+      "taskContent": "Another One By Pragati Bagul",
+      "taskType": "content",
+      "id": 13
+    },
+    {
+      "taskTitle": "Second One",
+      "taskContent": "This is by Pragati again",
+      "taskType": "content",
+      "id": 14
     }
   ]
 }
