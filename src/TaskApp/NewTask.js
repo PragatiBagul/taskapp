@@ -6,7 +6,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import NewTaskList from '../TaskList/NewTaskList';
 import NewTaskContent from '../TaskContent/NewTaskContent';
-const NewTask = () => {
+const NewTask = ({refresh,setRefresh}) => {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskContent, setTaskContent] = useState("");
     const [taskList, setTaskList] = useState([]);
@@ -26,25 +26,48 @@ const NewTask = () => {
 
     const addTask = (e) => {
         //e.preventDefault();
+        emptyTaskAlert();   
         const taskType = isTaskList ? "list" : "content";
         const t = isTaskList ? { taskTitle, taskList,taskType} : { taskTitle, taskContent,taskType};
         setIsPending(true);
         fetch('http://localhost:8000/tasks/', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(t)
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(t)
         }).then(() => {
             console.log('new blog added');
             setIsPending(false);
         }).then(() => {
             setTaskTitle("");
         }).then(() => {
-            isTaskList ? setTaskList([]) : setTaskContent("") ;
-        })
+            isTaskList ? setTaskList([]) : setTaskContent("");
+        }).then(() => {
+            setRefresh(!refresh);
+        });
     }
 
     const convertTaskType = () => {
         setIsTaskList(!isTaskList);
+    }
+
+    const emptyTaskAlert = () =>
+    {
+        if (isTaskList)
+        {
+            if ((taskTitle == null || taskTitle === "") &&
+                (taskList.length == 0))    
+            {
+                alert("Cannot add an empty task");
+            }
+        }
+        else
+        {
+            if ((taskTitle == null || taskTitle === "") &&
+            (taskContent == null || taskContent === ""))    
+            {
+                alert("Cannot add an empty task");
+            }
+        }
     }
     return (<Card>
         <CardContent>

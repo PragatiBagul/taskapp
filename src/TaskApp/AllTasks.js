@@ -1,11 +1,11 @@
 import { Container,Grid, Card,CardContent,Button, Typography} from "@mui/material";
+import ViewTaskList from "../TaskList/ViewTaskList";
 import useFetch from "./useFetch";
-const AllTasks = () => {
-    const { data: tasks, err, isPending } = useFetch("http://localhost:8000/tasks");
+const AllTasks = ({tasks,error,isPending}) => {
     return (<Container style={{backgroundColor:"whitesmoke"}}maxWidth="xl">
-            { err && <h1>{err}</h1>}
+            { error && <h1>{error}</h1>}
             { isPending && <h1>Loading</h1>}
-            {!err &&
+            {!error &&
             !isPending &&
                 <Grid container rowSpacing={3} columnSpacing={3}>
                     {tasks.map((task,index) => (
@@ -18,6 +18,7 @@ const AllTasks = () => {
                                         <Typography className="alignLeft" variant="p">
                                             {task.taskContent}
                                         </Typography>}
+                                    {task.taskType == "list" && <ViewTaskList taskList={task.taskList}/>}
                                 </CardContent>
                             </Card>
                         </Grid>))}

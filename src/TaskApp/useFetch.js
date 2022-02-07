@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const useFetch = (url) => {
+const useFetch = (refresh,url) => {
     const [data, setData] = useState(null)
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
@@ -17,6 +17,7 @@ const useFetch = (url) => {
             })
             .then(data => {
               setData(data);
+              console.log(data);
               setIsPending(false);
               setError(null);
             }).catch((err) => {
@@ -31,7 +32,7 @@ const useFetch = (url) => {
         }, 1000);
       
     return () => abortCont.abort();
-    }, [url])   
+    }, [refresh])   
     return { data, error, isPending };
 }
 
