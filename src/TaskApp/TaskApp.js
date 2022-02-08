@@ -4,18 +4,19 @@ import AllTasks from "./AllTasks";
 import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import { Button } from "@mui/material";
+import url from "./url";
 const TaskApp = () => {
-    const url = "http://localhost:8000/tasks";
     const [refresh, setRefresh] = useState(false);
     const { data:tasks, err, isPending } = useFetch(refresh, url);
     
-    return (<>
-        <Container style={{ backgroundColor: "whitesmoke", padding:"1%"}} maxWidth="xl">
-            <NewTask refresh={refresh} setRefresh={ setRefresh}/>    
+    return (<Container style={{backgroundColor:"ghostwhite"}} maxWidth="100%">
+            <Container style={{padding:"1%",marginBottom:"1%"}} maxWidth="sm">
+                <NewTask refresh={refresh} setRefresh={setRefresh} update={false} />    
+            </Container>
+            <AllTasks tasks={tasks} error={err} refresh={refresh} setRefresh={setRefresh} isPending={isPending} />  
         </Container>
-        <AllTasks tasks={tasks} error={err} isPending={ isPending}/>
-    </>
     );
 }
  
 export default TaskApp;
+

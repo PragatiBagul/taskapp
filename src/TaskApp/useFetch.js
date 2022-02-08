@@ -8,7 +8,6 @@ const useFetch = (refresh,url) => {
         setTimeout(() => {
           fetch(url,{signal:abortCont.signal})
             .then(res => {
-              console.log(res);
               if (!res.ok)
               {
                 throw Error('couldn\'t fetch the data');
@@ -17,7 +16,6 @@ const useFetch = (refresh,url) => {
             })
             .then(data => {
               setData(data);
-              console.log(data);
               setIsPending(false);
               setError(null);
             }).catch((err) => {
@@ -32,7 +30,7 @@ const useFetch = (refresh,url) => {
         }, 1000);
       
     return () => abortCont.abort();
-    }, [refresh])   
+    }, [url,refresh])   
     return { data, error, isPending };
 }
 

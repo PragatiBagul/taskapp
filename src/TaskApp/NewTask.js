@@ -6,6 +6,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import NewTaskList from '../TaskList/NewTaskList';
 import NewTaskContent from '../TaskContent/NewTaskContent';
+import url from "./url";
 const NewTask = ({refresh,setRefresh}) => {
     const [taskTitle, setTaskTitle] = useState("");
     const [taskContent, setTaskContent] = useState("");
@@ -30,7 +31,7 @@ const NewTask = ({refresh,setRefresh}) => {
         const taskType = isTaskList ? "list" : "content";
         const t = isTaskList ? { taskTitle, taskList,taskType} : { taskTitle, taskContent,taskType};
         setIsPending(true);
-        fetch('http://localhost:8000/tasks/', {
+        fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(t)
@@ -69,7 +70,7 @@ const NewTask = ({refresh,setRefresh}) => {
             }
         }
     }
-    return (<Card>
+    return (<Card sx={{boxShadow:"3"}}>
         <CardContent>
         <Input
             value={taskTitle}
@@ -80,12 +81,13 @@ const NewTask = ({refresh,setRefresh}) => {
             {isTaskList ? <NewTaskList taskList={taskList} setTaskList={ setTaskList}/> : <NewTaskContent taskContent={taskContent} setTaskContent={ setTaskContent}/> }
         </CardContent>
         <CardActions>
+        {!isTaskList && <IconButton color="primary" onClick={convertTaskType}><FormatListBulletedOutlinedIcon fontSize='inherit' /></IconButton>}
+            {isTaskList && <IconButton color="primary" onClick={convertTaskType}><ArticleOutlinedIcon fontSize='inherit' /></IconButton>}
             <Button onClick={clearTask}><ClearOutlinedIcon/>&emsp;Clear</Button>
             <Button onClick={addTask}><AddTaskIcon/>&emsp;Save</Button>
         </CardActions>
         <CardActions>
-            {!isTaskList && <IconButton color="primary" onClick={convertTaskType}><FormatListBulletedOutlinedIcon fontSize='inherit' /></IconButton>}
-            {isTaskList && <IconButton color="primary" onClick={convertTaskType}><ArticleOutlinedIcon fontSize='inherit' /></IconButton>}
+            
         </CardActions>
     </Card> );
 }

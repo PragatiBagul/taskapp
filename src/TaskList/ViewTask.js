@@ -1,14 +1,15 @@
-import { Checkbox, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText,TextField } from "@mui/material";
+import { Checkbox, IconButton, ListItem, ListItemButton, ListItemText,TextField } from "@mui/material";
 import { useState } from 'react';
 import './Task.css';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 const Task = ({task, index}) => {
     return (
     <ListItem disablePadding key={index}>        
         <ListItemButton>
-            <Checkbox edge="start" id={`checkbox-${index}`} readOnly />
+            <CheckBoxOutlineBlankIcon/>&emsp;
             <ListItemText
                 className={'incomplete'}
                 id={index}>
