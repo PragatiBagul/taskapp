@@ -1,4 +1,4 @@
-import { IconButton,Container,Grid, Card,CardContent, Typography,CardActions} from "@mui/material";
+import { CircularProgress,IconButton,Container,Grid, Card,CardContent, Typography,CardActions} from "@mui/material";
 import ViewTaskList from "../TaskList/ViewTaskList";
 import { useState } from "react";
 import { Check } from "@mui/icons-material";
@@ -19,7 +19,7 @@ const AllTasks = ({ refresh,setRefresh,tasks, error, isPending }) => {
     return (
         <Container style={{padding:'1%'}} maxWidth="100%">
             { error && <h1>{error}</h1>}
-            { isPending && <h1>Loading</h1>}
+            { isPending && <CircularProgress color="inherit" />}
             {!error &&
             !isPending &&
                 <Grid container rowSpacing={3} columnSpacing={3}>
